@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="EyeClock">
+    <file>Resources/ClosedEye.png</file>
+    <file>Resources/PlayIcon.png</file>
+    <file>Resources/OpenEye.png</file>
+    <file>Resources/ResetIcon.png</file>
+    <file>Resources/PauseIcon.png</file>
+    <file>Resources/Alarm.wav</file>
+    <file>Resources/Bell.wav</file>
+  </qresource>
+</RCC>
