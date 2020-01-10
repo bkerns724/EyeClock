@@ -75,7 +75,7 @@
       <AdditionalDependencies>Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>Xcopy /E /I Resources $(IntDir)Resources</Command>
+      <Command>mklink /J $(IntDir)Resources Resources </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -92,7 +92,7 @@
       <AdditionalDependencies>Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>Xcopy /E /I Resources $(IntDir)Resources</Command>
+      <Command>mklink /J $(IntDir)Resources Resources </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
