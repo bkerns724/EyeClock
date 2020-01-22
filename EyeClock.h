@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QTimer>
+#include <QtMultimedia/QSound>
 #include "ui_EyeClock.h"
 
 #include <Windows.h>
@@ -29,8 +30,8 @@ private:
 	QIcon playIcon;
 	QIcon pauseIcon;
 
-	LPCWSTR alarmFilename;
-	LPCWSTR bellFilename;
+	QSound* breakSound;
+	QSound* resumeSound;
 
 	QPixmap restingPicture;
 	QPixmap workingPicture;

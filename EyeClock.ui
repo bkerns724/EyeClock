@@ -37,8 +37,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>Resources/PlayIcon.png</normaloff>Resources/PlayIcon.png</iconset>
+     <iconset resource="EyeClock.qrc">
+      <normaloff>:/EyeClock/PlayIcon</normaloff>:/EyeClock/PlayIcon</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -65,8 +65,8 @@
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>Resources/ResetIcon.png</normaloff>Resources/ResetIcon.png</iconset>
+     <iconset resource="EyeClock.qrc">
+      <normaloff>:/EyeClock/ResetIcon</normaloff>:/EyeClock/ResetIcon</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -177,7 +177,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="EyeClock.qrc">:/EyeClock/Resources/OpenEye.png</pixmap>
+     <pixmap resource="EyeClock.qrc">:/EyeClock/WorkingPicture</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

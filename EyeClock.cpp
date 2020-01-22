@@ -3,6 +3,7 @@
 #include "EyeClock.h"
 #include <string>
 #include <QTime>
+#include <QtMultimedia/QSound>
 
 #include <mmsystem.h>
 
@@ -13,14 +14,14 @@ EyeClock::EyeClock(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	playIcon = QIcon("Resources\\PlayIcon.png");
-	pauseIcon = QIcon("Resources\\PauseIcon.png");
+	playIcon = QIcon(":/EyeClock/PlayIcon");
+	pauseIcon = QIcon(":/EyeClock/PauseIcon");
 
-	restingPicture = QPixmap("Resources\\ClosedEye.png");
-	workingPicture = QPixmap("Resources\\OpenEye.png");
+	restingPicture = QPixmap(":/EyeClock/RestingPicture");
+	workingPicture = QPixmap(":/EyeClock/WorkingPicture");
 
-	alarmFilename = L"Resources\\Alarm.wav";
-	bellFilename = L"Resources\\Bell.wav";
+	breakSound = new QSound(":/EyeClock/BreakSound");
+	resumeSound = new QSound(":/EyeClock/ResumeSound");
 
 	timer = new QTimer(this);
 
@@ -84,14 +85,14 @@ void EyeClock::TickUpdate() {
 		if (tickCount >= workTimeLimit) {
 			tickCount = 0;
 			SetResting(true);
-			PlaySound(alarmFilename, NULL, SND_FILENAME | SND_ASYNC);
+			breakSound->play();
 		}
 	}
 	else {
 		if (tickCount >= restTimeLimit) {
 			tickCount = 0;
 			SetResting(false);
-			PlaySound(bellFilename, NULL, SND_FILENAME | SND_ASYNC);
+			resumeSound->play();
 		}
 	}
 
