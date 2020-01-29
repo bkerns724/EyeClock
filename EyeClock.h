@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QTimer>
-#include <QtMultimedia/QSound>
+#include <QtMultimedia/QSoundEffect>
 #include "ui_EyeClock.h"
 
 #include <Windows.h>
@@ -30,13 +30,15 @@ private:
 	QIcon playIcon;
 	QIcon pauseIcon;
 
-	QSound* breakSound;
-	QSound* resumeSound;
+	QSoundEffect breakSound;
+	QSoundEffect resumeSound;
 
 	QPixmap restingPicture;
 	QPixmap workingPicture;
 
 	QTimer *timer;
+
+	const int volumeScale = 100;
 
 private slots:
 	void PlayButtonClicked();
@@ -45,4 +47,5 @@ private slots:
 	void RestTimeChanged(int seconds);
 	void TickUpdate();
 	void SetResting(bool restingInput);
+	void SetVolume(int volume);
 };

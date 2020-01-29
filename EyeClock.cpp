@@ -3,7 +3,8 @@
 #include "EyeClock.h"
 #include <string>
 #include <QTime>
-#include <QtMultimedia/QSound>
+
+#include <QtMultimedia/QAudio>
 
 #include <mmsystem.h>
 
@@ -20,8 +21,8 @@ EyeClock::EyeClock(QWidget *parent)
 	restingPicture = QPixmap(":/EyeClock/RestingPicture");
 	workingPicture = QPixmap(":/EyeClock/WorkingPicture");
 
-	breakSound = new QSound(":/EyeClock/BreakSound");
-	resumeSound = new QSound(":/EyeClock/ResumeSound");
+	breakSound.setSource(QUrl::fromLocalFile(":/EyeClock/BreakSound"));
+	resumeSound.setSource(QUrl::fromLocalFile(":/EyeClock/ResumeSound"));
 
 	timer = new QTimer(this);
 
@@ -44,10 +45,14 @@ EyeClock::EyeClock(QWidget *parent)
 void EyeClock::SetupSignals() {
 	connect(ui.startButton, SIGNAL(clicked()), this, SLOT(PlayButtonClicked()));
 	connect(ui.resetButton, SIGNAL(clicked()), this, SLOT(ResetButtonClicked()));
-	// Try to use a functor below
+
 	connect(ui.workTimeBox, SIGNAL(valueChanged(int)), this, SLOT(WorkTimeChanged(int)));
 	connect(ui.restTimeBox, SIGNAL(valueChanged(int)), this, SLOT(RestTimeChanged(int)));
+
 	connect(timer, SIGNAL(timeout()), this, SLOT(TickUpdate()));
+
+	connect(ui.volumeSlider, SIGNAL(valueChanged(int)), ui.sliderLabel, SLOT(setNum(int)));
+	connect(ui.volumeSlider, SIGNAL(valueChanged(int)), this, SLOT(SetVolume(int)));
 }
 
 void EyeClock::PlayButtonClicked() {
@@ -85,14 +90,14 @@ void EyeClock::TickUpdate() {
 		if (tickCount >= workTimeLimit) {
 			tickCount = 0;
 			SetResting(true);
-			breakSound->play();
+			breakSound.play();
 		}
 	}
 	else {
 		if (tickCount >= restTimeLimit) {
 			tickCount = 0;
 			SetResting(false);
-			resumeSound->play();
+			resumeSound.play();
 		}
 	}
 
@@ -115,4 +120,15 @@ void EyeClock::SetResting(bool restingInput)
 		resting = false;
 		ui.statusBox->setPixmap(workingPicture);
 	}
+}
+
+void EyeClock::SetVolume(int volume) {
+	float linearVolume = QAudio::convertVolume(volume / qreal(volumeScale),
+		QAudio::LogarithmicVolumeScale,
+		QAudio::LinearVolumeScale);
+
+	resumeSound.setVolume(linearVolume);
+	breakSound.setVolume(linearVolume);
+
+	ui.debugLabel->setNum(linearVolume);
 }

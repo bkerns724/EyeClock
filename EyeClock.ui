@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>380</height>
+    <width>510</width>
+    <height>317</height>
    </rect>
   </property>
   <property name="font">
    <font>
     <pointsize>16</pointsize>
    </font>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
+  <property name="tabletTracking">
+   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>EyeClock</string>
@@ -101,7 +107,7 @@
      <set>Qt::AlignCenter</set>
     </property>
     <property name="minimum">
-     <number>10</number>
+     <number>5</number>
     </property>
     <property name="maximum">
      <number>60</number>
@@ -116,8 +122,8 @@
    <widget class="QSpinBox" name="restTimeBox">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>290</y>
+      <x>290</x>
+      <y>160</y>
       <width>121</width>
       <height>61</height>
      </rect>
@@ -154,10 +160,10 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>230</y>
+      <x>290</x>
+      <y>110</y>
       <width>201</width>
-      <height>61</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -167,10 +173,10 @@
    <widget class="QLabel" name="statusBox">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>160</y>
-      <width>161</width>
-      <height>161</height>
+      <x>430</x>
+      <y>30</y>
+      <width>61</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
@@ -181,6 +187,89 @@
     </property>
     <property name="scaledContents">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSlider" name="volumeSlider">
+    <property name="geometry">
+     <rect>
+      <x>59</x>
+      <y>280</y>
+      <width>351</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="tabletTracking">
+     <bool>true</bool>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::TicksAbove</enum>
+    </property>
+    <property name="tickInterval">
+     <number>10</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>270</y>
+      <width>21</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>270</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>100</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sliderLabel">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>240</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>100</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="debugLabel">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>240</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>1</string>
     </property>
    </widget>
   </widget>
