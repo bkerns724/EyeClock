@@ -15,6 +15,11 @@ EyeClock::EyeClock(QWidget *parent)
 {
 	ui.setupUi(this);
 
+#ifdef NDEBUG
+	ui.menuBar->setVisible(false);
+	ui.debugLabel->hide();
+#endif
+	
 	playIcon = QIcon(":/EyeClock/PlayIcon");
 	pauseIcon = QIcon(":/EyeClock/PauseIcon");
 
@@ -53,6 +58,11 @@ void EyeClock::SetupSignals() {
 
 	connect(ui.volumeSlider, SIGNAL(valueChanged(int)), ui.sliderLabel, SLOT(setNum(int)));
 	connect(ui.volumeSlider, SIGNAL(valueChanged(int)), this, SLOT(SetVolume(int)));
+
+	connect(ui.dAlarmTime, SIGNAL(triggered()), this, SLOT(dAlarmTime()));
+	connect(ui.dBellTime, SIGNAL(triggered()), this, SLOT(dBellTime()));
+	connect(ui.dRingAlarm, SIGNAL(triggered()), this, SLOT(dRingAlarm()));
+	connect(ui.dRingBell, SIGNAL(triggered()), this, SLOT(dRingBell()));
 }
 
 void EyeClock::PlayButtonClicked() {
@@ -131,4 +141,20 @@ void EyeClock::SetVolume(int volume) {
 	breakSound.setVolume(linearVolume);
 
 	ui.debugLabel->setNum(linearVolume);
+}
+
+void EyeClock::dRingBell() {
+	resumeSound.play();
+}
+
+void EyeClock::dRingAlarm() {
+	breakSound.play();
+}
+
+void EyeClock::dBellTime() {
+	tickCount = restTimeLimit - 3;
+}
+
+void EyeClock::dAlarmTime() {
+	tickCount = workTimeLimit - 3;
 }

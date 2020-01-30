@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>317</height>
+    <height>339</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="font">
    <font>
@@ -20,6 +26,9 @@
   </property>
   <property name="tabletTracking">
    <bool>true</bool>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>EyeClock</string>
@@ -273,6 +282,27 @@
     </property>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>510</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="debugMenu">
+    <property name="title">
+     <string>Debug</string>
+    </property>
+    <addaction name="dRingBell"/>
+    <addaction name="dRingAlarm"/>
+    <addaction name="separator"/>
+    <addaction name="dBellTime"/>
+    <addaction name="dAlarmTime"/>
+   </widget>
+   <addaction name="debugMenu"/>
+  </widget>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
@@ -283,10 +313,31 @@
     <string>Default</string>
    </property>
   </action>
+  <action name="dRingBell">
+   <property name="text">
+    <string>Ring Bell</string>
+   </property>
+  </action>
+  <action name="dRingAlarm">
+   <property name="text">
+    <string>Ring Alarm</string>
+   </property>
+  </action>
+  <action name="dBellTime">
+   <property name="text">
+    <string>Almost Bell Time</string>
+   </property>
+  </action>
+  <action name="dAlarmTime">
+   <property name="text">
+    <string>Almost Alarm Time</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="EyeClock.qrc"/>
+  <include location="../../../.designer/backup/EyeClock.qrc"/>
  </resources>
  <connections/>
 </ui>

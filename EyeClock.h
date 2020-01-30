@@ -48,4 +48,9 @@ private slots:
 	void TickUpdate();
 	void SetResting(bool restingInput);
 	void SetVolume(int volume);
+
+	void dRingBell();
+	void dRingAlarm();
+	void dBellTime();
+	void dAlarmTime();
 };
